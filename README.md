@@ -1,6 +1,7 @@
 ## Welcome to ml4debugging
 
-[Sample link](https://github.com/ml4debugging/master/samples.md)
+Hello 1
+[Sample link](https://github.com/ml4debugging/samples.md)
 
 You can use the [editor on GitHub](https://github.com/ml4debugging/ml4debugging.github.io/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
 

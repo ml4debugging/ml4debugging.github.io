@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+  <title>ml4debugging - error messages</title>
+  <style type="text/css">
+div.my_name
+{
+font-family:"Arial";
+font-size:28px;
+font-weight:bold;
+text-align: center;
+}
+</style>
+</head>
+<body>
+<br>
+<br>
+<table style="text-align: left; width: 65%;" align="center" bgcolor="#fafafa" border="0" cellpadding="30" cellspacing="5">
+  <tbody>
+    <tr>
+    <td>
+<div class="my_name">A Selection of Present and Correct Error Messages</div>
+<p></p>
+The "present" error messages here are real error messages which came up in actual Python code I wrote in Professor Andrew Ng's deeplearning.ai Coursera sequence of courses on Deep Learning. 
+<p></p>
+<b>Present Error Message 1:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_forward(x, a0, parameters)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;    ### END CODE HERE ###<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    51 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 52&nbsp;&nbsp;&nbsp;&nbsp;    print("caches.shape: " + caches.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    53 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    54&nbsp;&nbsp;&nbsp;&nbsp;    # store values needed for backward propagation in cache<br>
+<br>
+TypeError: must be str, not tuple<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in Line 52 of your code, the "caches.shape" variable should be enclosed by a "str()" function.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 2:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_forward(x, a0, parameters)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    47&nbsp;&nbsp;&nbsp;&nbsp;        # Append "cache" to "caches" (1 line)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    48&nbsp;&nbsp;&nbsp;&nbsp;        caches = np.append( caches, cache )<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 49&nbsp;&nbsp;&nbsp;&nbsp;        print("cache.shape: " + str(cache.shape))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;        print("caches.shape: " + str(t) + " "+ str(caches.shape))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    51&nbsp;&nbsp;&nbsp;&nbsp;    ### END CODE HERE ###<br>
+<br>
+AttributeError: 'tuple' object has no attribute 'shape'<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in Line 49 of your code, the variable "cache" is of type "tuple", and a tuple cannot be referenced by a "shape" attribute.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 3:</b><br>
+---------------------------------------------------------------------------<br>
+in lstm_cell_forward(xt, a_prev, c_prev, parameters)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;     33&nbsp;&nbsp;&nbsp;&nbsp;     print("sigmoid: ")<br>
+&nbsp;&nbsp;&nbsp;&nbsp;     34&nbsp;&nbsp;&nbsp;&nbsp;     a = [0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 35&nbsp;&nbsp;&nbsp;&nbsp;     print(sigmoid(a))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;     36&nbsp;&nbsp;&nbsp;&nbsp;     # Retrieve parameters from "parameters"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;     37&nbsp;&nbsp;&nbsp;&nbsp;     Wf = parameters["Wf"]<br>
+<br>
+/home/jovyan/work/Week 1/Building a Recurrent Neural Network - Step by Step/rnn_utils.py in sigmoid(x)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;      7 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;      8 &nbsp;&nbsp;&nbsp;&nbsp;def sigmoid(x):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;====> 9 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    return 1 / (1 + np.exp(-x))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;     10 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;     11 <br>
+<br>
+TypeError: bad operand type for unary -: 'list'<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 9 of your code, the variable "x" is of type list, whereas it should be of type float.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 4:</b><br>
+---------------------------------------------------------------------------<br>
+TypeError                                 Traceback (most recent call last)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    13 &nbsp;&nbsp;&nbsp;&nbsp;da_next = np.random.randn(5,10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    14 &nbsp;&nbsp;&nbsp;&nbsp;gradients = rnn_cell_backward(da_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 15 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dxt\"][1][2] =", gradients["dxt"][1][2])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    16 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dxt\"].shape =", gradients["dxt"].shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    17 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"da_prev\"][2][3] =", gradients["da_prev"][2][3])<br>
+<br>
+TypeError: 'NoneType' object is not subscriptable<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 15 of your code, the variable "gradients" is of type None, because you have not assigned any value to it yet.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 5:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_cell_backward(da_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    33&nbsp;&nbsp;&nbsp;&nbsp;    print("da_next.shape: ", da_next.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    34&nbsp;&nbsp;&nbsp;&nbsp;    print("Wax.T.dtanh: ", (np.dot(Wax.T, dtanh)).shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 35&nbsp;&nbsp;&nbsp;&nbsp;    dxt = np.dot( da_next, np.dot(Wax.T, dtanh))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    36&nbsp;&nbsp;&nbsp;&nbsp;    dWax = np.dot( dtanh, xt.T)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    37&nbsp;&nbsp;&nbsp;&nbsp;    print("dWax.shape: ", dWax.shape)<br>
+<br>
+ValueError: shapes (5,10) and (3,10) not aligned: 10 (dim 1) != 3 (dim 0)<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 35 of your code, you are trying to take the product of two matrices whose dimensions are not matching.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 6:</b><br>
+---------------------------------------------------------------------------<br>
+IndexError                                Traceback (most recent call last)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    21 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dWaa\"][1][2] =", gradients["dWaa"][1][2])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    22 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dWaa\"].shape =", gradients["dWaa"].shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 23 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dba\"][4] =", gradients["dba"][4])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    24 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dba\"].shape =", gradients["dba"].shape)<br>
+<br>
+IndexError: invalid index to scalar variable.<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, the variable gradients["dba"] is a scalar value, whereas you are trying to reference an array index from it.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 7:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    19 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    20&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve values from the first cache (t=1) of caches (2 lines)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 21&nbsp;&nbsp;&nbsp;&nbsp;    (caches, x) = None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    22&nbsp;&nbsp;&nbsp;&nbsp;    (a1, a0, x1, parameters) = None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    23 <br>
+<br>
+TypeError: 'NoneType' object is not iterable<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 21 of your code, you are assigning the value "None" to the tuple (caches, x), which is not allowed by Python.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 8:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    20&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve values from the first cache (t=1) of caches (2 lines)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    21&nbsp;&nbsp;&nbsp;&nbsp;    (caches, x) = caches<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 22&nbsp;&nbsp;&nbsp;&nbsp;    (a1, a0, x1, parameters) = caches[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    23 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    24&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve dimensions from da's and x1's shapes (2 lines)<br>
+<br>
+ValueError: too many values to unpack (expected 4)<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 22 of your code, the variable "caches[0]" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 9:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    21&nbsp;&nbsp;&nbsp;&nbsp;    print("len-caches 0: ", len(caches))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    22&nbsp;&nbsp;&nbsp;&nbsp;    (caches, x) = caches<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 23&nbsp;&nbsp;&nbsp;&nbsp;   print("len-caches 1: ", len(caches[0][0][0]))<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    24&nbsp;&nbsp;&nbsp;&nbsp;    (a1, a0, x1, parameters) = caches[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    25 <br>
+<br>
+TypeError: object of type 'numpy.float64' has no len()<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, you are calling the function "len" on the variable caches[0][0][0], which is a float value, which is not allowed by Python.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  10:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_cell_backward(da_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   17 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;   18&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve values from cache<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===>19&nbsp;&nbsp;&nbsp;&nbsp;    (a_next, a_prev, xt, parameters) = cache<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   20 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;   21&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve values from parameters<br>
+<br>
+ValueError: too many values to unpack (expected 4)<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 19 of your code, the variable "cache" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  11:</b><br>
+---------------------------------------------------------------------------<br>
+in rnn_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    42&nbsp;&nbsp;&nbsp;&nbsp;        # Increment global derivatives w.r.t parameters by adding their derivative at time-step t<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    43&nbsp;&nbsp;&nbsp;&nbsp;        dx[:, :, t] = dxt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 44&nbsp;&nbsp;&nbsp;&nbsp;        dWax += dWaxt<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    45&nbsp;&nbsp;&nbsp;&nbsp;        dWaa += dWaat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    46&nbsp;&nbsp;&nbsp;&nbsp;        dba += dbat<br>
+<br>
+ValueError: operands could not be broadcast together with shapes (5,10) (5,3) (5,10) <br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 44 of your code, the variables "dWax" and "dWaxt" are matrices which are of different dimensions.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  12:</b><br>
+---------------------------------------------------------------------------<br>
+line 38<br>
+&nbsp;&nbsp;&nbsp;&nbsp;   dcct = dc_next * it *<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
+SyntaxError: invalid syntax<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 38 of your code, after the last * in the line, you need another number.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  13:</b><br>
+---------------------------------------------------------------------------<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    21 &nbsp;&nbsp;&nbsp;&nbsp;dc_next = np.random.randn(5,10)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    22 &nbsp;&nbsp;&nbsp;&nbsp;gradients = lstm_cell_backward(da_next, dc_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 23 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dxt\"][1][2] =", gradients["dxt"][1][2])<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    24 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"dxt\"].shape =", gradients["dxt"].shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    25 &nbsp;&nbsp;&nbsp;&nbsp;print("gradients[\"da_prev\"][2][3] =", gradients["da_prev"][2][3])<br>
+<br>
+TypeError: 'NoneType' object is not subscriptable<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, the variable 'gradients["dxt"]' is of type None, and you cannot index into a None object.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  14:</b><br>
+---------------------------------------------------------------------------<br>
+in lstm_cell_backward(da_next, dc_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    49 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    50&nbsp;&nbsp;&nbsp;&nbsp;    # Compute parameters related derivatives. Use equations (11)-(14) (8 lines)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 51&nbsp;&nbsp;&nbsp;&nbsp;    concat = (np.concatenate(a_prev,xt)).T<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    52&nbsp;&nbsp;&nbsp;&nbsp;    print("concat shape: ", concat.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    53&nbsp;&nbsp;&nbsp;&nbsp;    dWf = None<br>
+<br>
+TypeError: only length-1 arrays can be converted to Python scalars<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 51 of your code, the np.concatenate function needs two sets of braces around the list of matrices to be concatenated.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  15:</b><br>
+---------------------------------------------------------------------------<br>
+in lstm_cell_backward(da_next, dc_next, cache)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    52&nbsp;&nbsp;&nbsp;&nbsp;    print("concat shape: ", concat.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    53&nbsp;&nbsp;&nbsp;&nbsp;    print("dft.shape: ", dft.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 54&nbsp;&nbsp;&nbsp;&nbsp;    dWf = dft * concat<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    55&nbsp;&nbsp;&nbsp;&nbsp;    dWi = None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    56&nbsp;&nbsp;&nbsp;&nbsp;    dWc = None<br>
+<br>
+ValueError: operands could not be broadcast together with shapes (5,10) (10,8)<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 54 of your code, the variables dft and concat are matrices of different dimensions, and hence cannot be multiplied together.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  16:</b><br>
+---------------------------------------------------------------------------<br>
+in lstm_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    25&nbsp;&nbsp;&nbsp;&nbsp;    # Retrieve values from the first cache (t=1) of caches.<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    26&nbsp;&nbsp;&nbsp;&nbsp;    (caches, x) = caches<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 27&nbsp;&nbsp;&nbsp;&nbsp;    (a1, c1, a0, c0, f1, i1, cc1, o1, x1, parameters) = caches[0]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    28 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;    29&nbsp;&nbsp;&nbsp;&nbsp;    ### START CODE HERE ###<br>
+<br>
+ValueError: not enough values to unpack (expected 10, got 5)<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 27 of your code, the variable "caches[0]" does not have enough values to assign to the tuple on the left hand side of the equation.<br>
+<br>
+*****************************<br>
+<b>Present Error Message  17:</b><br>
+---------------------------------------------------------------------------<br>
+in lstm_backward(da, caches)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    33&nbsp;&nbsp;&nbsp;&nbsp;    print("da.shape: ", da.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    34&nbsp;&nbsp;&nbsp;&nbsp;    print("x1.shape: ", x1.shape)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;===> 35&nbsp;&nbsp;&nbsp;&nbsp;    n_a, m, T_x = None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    36&nbsp;&nbsp;&nbsp;&nbsp;    n_x, m = None<br>
+&nbsp;&nbsp;&nbsp;&nbsp;    37 <br>
+<br>
+TypeError: 'NoneType' object is not iterable<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 35 of your code, the tuple on the left hand side of the equation cannot be assigned a "None" value.<br>
+<br>
+*****************************<br>
+<b>Present Error Message 18:</b><br>
+<br>
+line 17<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   print("pair: pair)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
+SyntaxError: EOL while scanning string literal<br>
+<br>
+<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 17 of your code, you have not closed a quote mark.<br>
+<br>
+*****************************<br>
+ </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+</body></html>

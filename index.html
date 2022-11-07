@@ -55,6 +55,9 @@ You can see a more complete list of such message pairs at this link: <a href="ht
 This project is a work in progress. In the first iteration, we will only use the information present in the line in which the error occurs to translate the error message. This, I believe, can be handled by a vanilla Recurrent Neural Network. Later on, we may use information from the surrounding lines of code, which, in a more advanced form, would be handled by a variation on a vanilla Recurrent Neural Network called a "Bidirectional LSTM Network".
 </p><p>
 The primary challenge in this project is to put together the training data that will be used to train the neural network, and I am still searching for a clever way to do it which does not make it necessary to hand-write all the message pairs.
+</p><p>
+Note: I came up with and first published this idea in 2018. As of 2022, there is indeed a clever way to put together the training data. That is using the <a href="https://openai.com/blog/gpt-3-apps/">GPT-3 text generation model</a> created by OpenAI. I plan to experiment with it when I have some time.
+</p>
  </td>
     </tr>
   </tbody>

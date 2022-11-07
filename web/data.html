@@ -48,7 +48,7 @@ in rnn_forward(x, a0, parameters)<br>
 <br>
 AttributeError: 'tuple' object has no attribute 'shape'<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in Line 49 of your code, the variable "cache" is of type "tuple", and a tuple cannot be referenced by a "shape" attribute.<br>
+<b>Correct Error Message</b>: I believe the problem is that in Line 49 of your code, the variable "cache" is of type "tuple", and a tuple cannot be referenced by a "shape" attribute.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 3:</b><br>
@@ -69,7 +69,7 @@ in lstm_cell_forward(xt, a_prev, c_prev, parameters)<br>
 <br>
 TypeError: bad operand type for unary -: 'list'<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 9 of your code, the variable "x" is of type list, whereas it should be of type float.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 9 of your code, the variable "x" is of type list, whereas it should be of type float.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 4:</b><br>
@@ -83,7 +83,7 @@ TypeError                                 Traceback (most recent call last)<br>
 <br>
 TypeError: 'NoneType' object is not subscriptable<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 15 of your code, the variable "gradients" is of type None, because you have not assigned any value to it yet.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 15 of your code, the variable "gradients" is of type None, because you have not assigned any value to it yet.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 5:</b><br>
@@ -97,7 +97,7 @@ in rnn_cell_backward(da_next, cache)<br>
 <br>
 ValueError: shapes (5,10) and (3,10) not aligned: 10 (dim 1) != 3 (dim 0)<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 35 of your code, you are trying to take the product of two matrices whose dimensions are not matching.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 35 of your code, you are trying to take the product of two matrices whose dimensions are not matching.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 6:</b><br>
@@ -110,7 +110,7 @@ IndexError                                Traceback (most recent call last)<br>
 <br>
 IndexError: invalid index to scalar variable.<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, the variable gradients["dba"] is a scalar value, whereas you are trying to reference an array index from it.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 23 of your code, the variable gradients["dba"] is a scalar value, whereas you are trying to reference an array index from it.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 7:</b><br>
@@ -124,7 +124,7 @@ in rnn_backward(da, caches)<br>
 <br>
 TypeError: 'NoneType' object is not iterable<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 21 of your code, you are assigning the value "None" to the tuple (caches, x), which is not allowed by Python.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 21 of your code, you are assigning the value "None" to the tuple (caches, x), which is not allowed by Python.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 8:</b><br>
@@ -138,7 +138,7 @@ in rnn_backward(da, caches)<br>
 <br>
 ValueError: too many values to unpack (expected 4)<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 22 of your code, the variable "caches[0]" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 22 of your code, the variable "caches[0]" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 9:</b><br>
@@ -152,7 +152,7 @@ in rnn_backward(da, caches)<br>
 <br>
 TypeError: object of type 'numpy.float64' has no len()<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, you are calling the function "len" on the variable caches[0][0][0], which is a float value, which is not allowed by Python.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 23 of your code, you are calling the function "len" on the variable caches[0][0][0], which is a float value, which is not allowed by Python.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  10:</b><br>
@@ -166,7 +166,7 @@ in rnn_cell_backward(da_next, cache)<br>
 <br>
 ValueError: too many values to unpack (expected 4)<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 19 of your code, the variable "cache" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 19 of your code, the variable "cache" is a tuple that is returning too many values to be assigned to the left hand side of the equation.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  11:</b><br>
@@ -180,7 +180,7 @@ in rnn_backward(da, caches)<br>
 <br>
 ValueError: operands could not be broadcast together with shapes (5,10) (5,3) (5,10) <br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 44 of your code, the variables "dWax" and "dWaxt" are matrices which are of different dimensions.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 44 of your code, the variables "dWax" and "dWaxt" are matrices which are of different dimensions.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  12:</b><br>
@@ -190,7 +190,7 @@ line 38<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
 SyntaxError: invalid syntax<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 38 of your code, after the last * in the line, you need another number.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 38 of your code, after the last * in the line, you need another number.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  13:</b><br>
@@ -203,7 +203,7 @@ SyntaxError: invalid syntax<br>
 <br>
 TypeError: 'NoneType' object is not subscriptable<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 23 of your code, the variable 'gradients["dxt"]' is of type None, and you cannot index into a None object.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 23 of your code, the variable 'gradients["dxt"]' is of type None, and you cannot index into a None object.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  14:</b><br>
@@ -217,7 +217,7 @@ in lstm_cell_backward(da_next, dc_next, cache)<br>
 <br>
 TypeError: only length-1 arrays can be converted to Python scalars<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 51 of your code, the np.concatenate function needs two sets of braces around the list of matrices to be concatenated.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 51 of your code, the np.concatenate function needs two sets of braces around the list of matrices to be concatenated.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  15:</b><br>
@@ -231,7 +231,7 @@ in lstm_cell_backward(da_next, dc_next, cache)<br>
 <br>
 ValueError: operands could not be broadcast together with shapes (5,10) (10,8)<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 54 of your code, the variables dft and concat are matrices of different dimensions, and hence cannot be multiplied together.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 54 of your code, the variables dft and concat are matrices of different dimensions, and hence cannot be multiplied together.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  16:</b><br>
@@ -245,7 +245,7 @@ in lstm_backward(da, caches)<br>
 <br>
 ValueError: not enough values to unpack (expected 10, got 5)<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 27 of your code, the variable "caches[0]" does not have enough values to assign to the tuple on the left hand side of the equation.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 27 of your code, the variable "caches[0]" does not have enough values to assign to the tuple on the left hand side of the equation.<br>
 <br>
 *****************************<br>
 <b>Present Error Message  17:</b><br>
@@ -259,7 +259,7 @@ in lstm_backward(da, caches)<br>
 <br>
 TypeError: 'NoneType' object is not iterable<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 35 of your code, the tuple on the left hand side of the equation cannot be assigned a "None" value.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 35 of your code, the tuple on the left hand side of the equation cannot be assigned a "None" value.<br>
 <br>
 *****************************<br>
 <b>Present Error Message 18:</b><br>
@@ -269,7 +269,7 @@ line 17<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;^<br>
 SyntaxError: EOL while scanning string literal<br>
 <br>
-<b>Correct Error Message</b>: Sandeep, I'm having a problem interpreting your code. I believe the problem is that in line 17 of your code, you have not closed a quote mark.<br>
+<b>Correct Error Message</b>: I believe the problem is that in line 17 of your code, you have not closed a quote mark.<br>
 <br>
 *****************************<br>
  </td>
